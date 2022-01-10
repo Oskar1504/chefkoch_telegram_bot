@@ -1,0 +1,17 @@
+{
+  "help": {
+    "types": [
+      "info",
+      "inf",
+      "help",
+      "hlp"
+    ],
+    "description": "Command description"
+  },
+  "db_get_<collection>": {
+    "types": [
+      "db get (.+)"
+    ],
+    "description": "Command description"
+  }
+}
