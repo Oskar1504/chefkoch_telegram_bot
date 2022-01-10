@@ -6,7 +6,7 @@ module.exports = {
         const callback_data = interaction.data
         if (!callback_data) return;
         try {
-            const event = require(`./server/callbacks/${callback_data}`);
+            const event = require(`../callbacks/${callback_data}`);
             await event.execute(bot, interaction)
             // console.debug(`[${this.name}]: ${interaction.commandName} by ${interaction.user.username}|${interaction.user.id} at ${interaction.createdAt}`)
         } catch (error) {

@@ -8,7 +8,7 @@ module.exports = {
                 const command = interaction.text.split(" ")[0];
                 if (!command) return;
                 try {
-                    const event = require(`./server/commands/${command}`);
+                    const event = require(__dirname + `/../commands/${command}`);
                     await event.execute(bot, interaction)
                     // console.debug(`[${this.name}]: ${interaction.commandName} by ${interaction.user.username}|${interaction.user.id} at ${interaction.createdAt}`)
                 } catch (error) {
