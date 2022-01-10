@@ -10,11 +10,27 @@ module.exports = {
         const opts = {
             chat_id: interaction.message.chat.id,
             message_id: interaction.message.message_id,
-            parse_mode: "HTML"
+            parse_mode: "HTML",
+            reply_markup: JSON.stringify({
+                inline_keyboard: [
+                    [
+                        {
+                            text: 'Day back',
+                            callback_data: 'day_back'
+                        },
+                        {
+                            text: 'Categories',
+                            callback_data: 'week'
+                        },
+                        {
+                            text: 'Day forward',
+                            callback_data: 'day_forward'
+                        }
+                    ]
+                ]
+            })
         };
-
-        console.log(interaction.data)
-        // bot.editMessageText(msg, opts);
-        bot.sendMessage(interaction.message.chat.id,msg, opts);
+        bot.editMessageText(msg, opts);
+        // bot.sendMessage(interaction.message.chat.id,msg, opts);
     },
 };
