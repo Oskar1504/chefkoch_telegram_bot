@@ -7,7 +7,7 @@ const fs = require('fs')
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, {polling: true});
 
 
-bot.setMyCommands([{command:"week",description:"descirption "},{command:"recipe",description: "shows one recipe"}])
+bot.setMyCommands([{command:"week",description:"Browse recipes in this week "},{command:"daily_recipe",description: "show the RecipeOfTheDay"}])
 
 // Matches /love
 bot.onText(/Love/, function onLoveText(msg) {
