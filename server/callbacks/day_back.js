@@ -5,7 +5,6 @@ const Week = require("../helper/week")
 module.exports = {
     async execute(bot,interaction) {
 
-        console.log(interaction.message.entities)
         let day_format_area = interaction.message.entities.find( e => e.type == "underline"),
             day_str = interaction.message.text.substr(day_format_area.offset,day_format_area.length),
             day = Week.dayToNum(day_str) - 1
