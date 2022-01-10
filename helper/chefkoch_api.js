@@ -24,4 +24,21 @@ module.exports = {
 
         return output
     },
+    async getTodaysRecipes() {
+        let host = "http://localhost:42069",
+            route = "/api/getTodaysRecipes",
+            url = host + route,
+            output = []
+
+        await axios.get(url)
+            .then(async function (response) {
+                console.log(url, " | Status:", response.status);
+                output = response.data.recipes
+            })
+            .catch(function (error) {
+                console.log(error.toString());
+            })
+
+        return output
+    },
 };
