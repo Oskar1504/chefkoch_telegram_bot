@@ -8,7 +8,12 @@ const axios = require('axios')
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, {polling: true});
 
 
-bot.setMyCommands([{command:"week",description:"Browse recipes in this week "},{command:"daily_recipe",description: "show the RecipeOfTheDay"}])
+bot.setMyCommands([
+    {command:"week",description:"Browse recipes in this week "},
+    {command:"daily_recipe",description: "show the RecipeOfTheDay"},
+    {command:"led_on",description: "Turns led on"},
+    {command:"led_off",description: "Turns led off"}
+])
 
 
 const eventFiles = fs.readdirSync(__dirname + '/events').filter(file => file.endsWith('.js'));

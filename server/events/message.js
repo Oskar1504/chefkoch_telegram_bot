@@ -1,3 +1,22 @@
+const WebSocket = require('ws');
+let  wss = new WebSocket("ws://localhost:42082")
+
+wss.onmessage = async function (event) {
+    console.log(event.data.toString())
+}
+wss.onopen= async function (event) {
+    wss.send(JSON.stringify({
+        source:"telegram_bot",
+        target:"website",
+        type:"message",
+        content:"Telegram bot connected"
+    }))
+}
+wss.onclose = async function (event) {
+    console.error("WS Con closed")
+}
+
+
 module.exports = {
     name: 'message',
     async execute(bot, interaction) {
@@ -9,7 +28,7 @@ module.exports = {
                 if (!command) return;
                 try {
                     const event = require(__dirname + `/../commands/${command}`);
-                    await event.execute(bot, interaction)
+                    await event.execute(bot, interaction, wss)
                     // console.debug(`[${this.name}]: ${interaction.commandName} by ${interaction.user.username}|${interaction.user.id} at ${interaction.createdAt}`)
                 } catch (error) {
                     console.error(error);
